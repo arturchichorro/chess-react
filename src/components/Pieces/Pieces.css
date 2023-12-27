@@ -1,0 +1,334 @@
+.pieces {
+    right: 0;
+    top: 0;
+    position: absolute;
+    left: calc(.25*var(--tile-size));
+    bottom: calc(.25*var(--tile-size));
+}
+
+.pieces-flipped {
+    rotate: 180deg;
+}
+
+.piece {
+    width: 12.5%;
+    height: 12.5%;
+    position: absolute;
+    background-size: 100%;
+}
+
+.piece:hover {
+    cursor: grab;
+}
+
+.piece:active {
+    cursor: grabbing;
+}
+
+.piece.bk {
+    background-image: url('../../assets/bk.png');
+}
+
+.piece.bq {
+    background-image: url('../../assets/bq.png');
+}
+
+.piece.br {
+    background-image: url('../../assets/br.png');
+}
+
+.piece.bb {
+    background-image: url('../../assets/bb.png');
+}
+
+.piece.bn {
+    background-image: url('../../assets/bn.png');
+}
+
+.piece.bp {
+    background-image: url('../../assets/bp.png');
+}
+
+.piece.wk {
+    background-image: url('../../assets/wk.png');
+}
+
+.piece.wq {
+    background-image: url('../../assets/wq.png');
+}
+
+.piece.wr {
+    background-image: url('../../assets/wr.png');
+}
+
+.piece.wb {
+    background-image: url('../../assets/wb.png');
+}
+
+.piece.wn {
+    background-image: url('../../assets/wn.png');
+}
+
+.piece.wp {
+    background-image: url('../../assets/wp.png');
+}
+
+.piece.p-07 {
+    transform: translate(0%, 0%);
+}
+
+.piece.p-17 {
+    transform: translate(calc(var(--flipped)*100%), 0%);
+}
+
+.piece.p-27 {
+    transform: translate(calc(var(--flipped)*200%), 0%);
+}
+
+.piece.p-37 {
+    transform: translate(calc(var(--flipped)*300%), 0%);
+}
+
+.piece.p-47 {
+    transform: translate(calc(var(--flipped)*400%), 0%);
+}
+
+.piece.p-57 {
+    transform: translate(calc(var(--flipped)*500%), 0%);
+}
+
+.piece.p-67 {
+    transform: translate(calc(var(--flipped)*600%), 0%);
+}
+
+.piece.p-77 {
+    transform: translate(calc(var(--flipped)*700%), 0%);
+}
+
+.piece.p-06 {
+    transform: translate(0%, calc(var(--flipped)*100%));
+}
+
+.piece.p-16 {
+    transform: translate(calc(var(--flipped)*100%), calc(var(--flipped)*100%));
+}
+
+.piece.p-26 {
+    transform: translate(calc(var(--flipped)*200%), calc(var(--flipped)*100%));
+}
+
+.piece.p-36 {
+    transform: translate(calc(var(--flipped)*300%), calc(var(--flipped)*100%));
+}
+
+.piece.p-46 {
+    transform: translate(calc(var(--flipped)*400%), calc(var(--flipped)*100%));
+}
+
+.piece.p-56 {
+    transform: translate(calc(var(--flipped)*500%), calc(var(--flipped)*100%));
+}
+
+.piece.p-66 {
+    transform: translate(calc(var(--flipped)*600%), calc(var(--flipped)*100%));
+}
+
+.piece.p-76 {
+    transform: translate(calc(var(--flipped)*700%), calc(var(--flipped)*100%));
+}
+
+.piece.p-05 {
+    transform: translate(0%, calc(var(--flipped)*200%));
+}
+
+.piece.p-15 {
+    transform: translate(calc(var(--flipped)*100%), calc(var(--flipped)*200%));
+}
+
+.piece.p-25 {
+    transform: translate(calc(var(--flipped)*200%), calc(var(--flipped)*200%));
+}
+
+.piece.p-35 {
+    transform: translate(calc(var(--flipped)*300%), calc(var(--flipped)*200%));
+}
+
+.piece.p-45 {
+    transform: translate(calc(var(--flipped)*400%), calc(var(--flipped)*200%));
+}
+
+.piece.p-55 {
+    transform: translate(calc(var(--flipped)*500%), calc(var(--flipped)*200%));
+}
+
+.piece.p-65 {
+    transform: translate(calc(var(--flipped)*600%), calc(var(--flipped)*200%));
+}
+
+.piece.p-75 {
+    transform: translate(calc(var(--flipped)*700%), calc(var(--flipped)*200%));
+}
+
+.piece.p-04 {
+    transform: translate(0%, calc(var(--flipped)*300%));
+}
+
+.piece.p-14 {
+    transform: translate(calc(var(--flipped)*100%), calc(var(--flipped)*300%));
+}
+
+.piece.p-24 {
+    transform: translate(calc(var(--flipped)*200%), calc(var(--flipped)*300%));
+}
+
+.piece.p-34 {
+    transform: translate(calc(var(--flipped)*300%), calc(var(--flipped)*300%));
+}
+
+.piece.p-44 {
+    transform: translate(calc(var(--flipped)*400%), calc(var(--flipped)*300%));
+}
+
+.piece.p-54 {
+    transform: translate(calc(var(--flipped)*500%), calc(var(--flipped)*300%));
+}
+
+.piece.p-64 {
+    transform: translate(calc(var(--flipped)*600%), calc(var(--flipped)*300%));
+}
+
+.piece.p-74 {
+    transform: translate(calc(var(--flipped)*700%), calc(var(--flipped)*300%));
+}
+
+.piece.p-03 {
+    transform: translate(0%, calc(var(--flipped)*400%));
+}
+
+.piece.p-13 {
+    transform: translate(calc(var(--flipped)*100%), calc(var(--flipped)*400%));
+}
+
+.piece.p-23 {
+    transform: translate(calc(var(--flipped)*200%), calc(var(--flipped)*400%));
+}
+
+.piece.p-33 {
+    transform: translate(calc(var(--flipped)*300%), calc(var(--flipped)*400%));
+}
+
+.piece.p-43 {
+    transform: translate(calc(var(--flipped)*400%), calc(var(--flipped)*400%));
+}
+
+.piece.p-53 {
+    transform: translate(calc(var(--flipped)*500%), calc(var(--flipped)*400%));
+}
+
+.piece.p-63 {
+    transform: translate(calc(var(--flipped)*600%), calc(var(--flipped)*400%));
+}
+
+.piece.p-73 {
+    transform: translate(calc(var(--flipped)*700%), calc(var(--flipped)*400%));
+}
+
+.piece.p-02 {
+    transform: translate(0%, calc(var(--flipped)*500%));
+}
+
+.piece.p-12 {
+    transform: translate(calc(var(--flipped)*100%), calc(var(--flipped)*500%));
+}
+
+.piece.p-22 {
+    transform: translate(calc(var(--flipped)*200%), calc(var(--flipped)*500%));
+}
+
+.piece.p-32 {
+    transform: translate(calc(var(--flipped)*300%), calc(var(--flipped)*500%));
+}
+
+.piece.p-42 {
+    transform: translate(calc(var(--flipped)*400%), calc(var(--flipped)*500%));
+}
+
+.piece.p-52 {
+    transform: translate(calc(var(--flipped)*500%), calc(var(--flipped)*500%));
+}
+
+.piece.p-62 {
+    transform: translate(calc(var(--flipped)*600%), calc(var(--flipped)*500%));
+}
+
+.piece.p-72 {
+    transform: translate(calc(var(--flipped)*700%), calc(var(--flipped)*500%));
+}
+
+.piece.p-01 {
+    transform: translate(0%, calc(var(--flipped)*600%));
+}
+
+.piece.p-11 {
+    transform: translate(calc(var(--flipped)*100%), calc(var(--flipped)*600%));
+}
+
+.piece.p-21 {
+    transform: translate(calc(var(--flipped)*200%), calc(var(--flipped)*600%));
+}
+
+.piece.p-31 {
+    transform: translate(calc(var(--flipped)*300%), calc(var(--flipped)*600%));
+}
+
+.piece.p-41 {
+    transform: translate(calc(var(--flipped)*400%), calc(var(--flipped)*600%));
+}
+
+.piece.p-51 {
+    transform: translate(calc(var(--flipped)*500%), calc(var(--flipped)*600%));
+}
+
+.piece.p-61 {
+    transform: translate(calc(var(--flipped)*600%), calc(var(--flipped)*600%));
+}
+
+.piece.p-71 {
+    transform: translate(calc(var(--flipped)*700%), calc(var(--flipped)*600%));
+}
+
+.piece.p-00 {
+    transform: translate(0%, calc(var(--flipped)*700%));
+}
+
+.piece.p-10 {
+    transform: translate(calc(var(--flipped)*100%), calc(var(--flipped)*700%));
+}
+
+.piece.p-20 {
+    transform: translate(calc(var(--flipped)*200%), calc(var(--flipped)*700%));
+}
+
+.piece.p-30 {
+    transform: translate(calc(var(--flipped)*300%), calc(var(--flipped)*700%));
+}
+
+.piece.p-40 {
+    transform: translate(calc(var(--flipped)*400%), calc(var(--flipped)*700%));
+}
+
+.piece.p-50 {
+    transform: translate(calc(var(--flipped)*500%), calc(var(--flipped)*700%));
+}
+
+.piece.p-60 {
+    transform: translate(calc(var(--flipped)*600%), calc(var(--flipped)*700%));
+}
+
+.piece.p-70 {
+    transform: translate(calc(var(--flipped)*700%), calc(var(--flipped)*700%));
+}
+
+.p-flipped {
+    rotate: 180deg;
+}

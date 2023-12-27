@@ -1,0 +1,17 @@
+:root {
+    --tile-size: 100px;
+    --light-tile: rgba(216, 221, 218, 1);
+    --dark-tile: rgba(150, 189, 163, 0.822);
+    --dark-highlight: rgba(238, 63, 60, 0.8);
+    --light-highlight: rgba(237, 103, 101, 0.8);
+    --bg-color: #0c1810;
+    --highlight: rgba(0, 0, 0, .1);
+    --check: rgba(254, 236, 72, 0.5);
+    --flipped: 1;
+}
+
+@media all and (max-width: 450px) {
+    :root {
+        --tile-size: 25px;
+    }
+}

@@ -14,7 +14,9 @@ export const reducer = (state, action) => {
                 ...game,
                 {
                     position: action.payload.newPosition,
-                    castleDirection: action.payload.castle
+                    castleDirection: {
+                        ...action.payload.castle
+                    }
                 }
             ]
 

@@ -1,10 +1,10 @@
 import actionTypes from "../actionTypes"
 
-export const makeNewMove = ({ newPosition, newMove }) => {
+export const makeNewMove = ({ newPosition, castle, newMove }) => {
 
     return {
         type: actionTypes.NEW_MOVE,
-        payload: { newPosition, newMove }
+        payload: { newPosition, castle, newMove }
     }
 }
 export const generateCandidateMoves = ({ candidateMoves }) => {

@@ -10,15 +10,17 @@ export const Status = {
 }
 
 export const initGameState = {
-    position: [createPosition()],
+    game: [{
+        position: createPosition(),
+        castleDirection: {
+            w: 'both',
+            b: 'both',
+        }
+    }],
     turn: 'w',
     movesList: [],
     candidateMoves: [],
     status: Status.ongoing,
     promotionSquare: null,
-    castleDirection: {
-        w: 'both',
-        b: 'both',
-    },
     flipped: false
 }

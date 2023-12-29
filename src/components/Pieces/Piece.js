@@ -9,7 +9,7 @@ const Piece = ({
 }) => {
 
     const { appState, dispatch } = useAppContext();
-    const { turn, castleDirection, position: currentPosition } = appState;
+    const { turn, game: currentGame } = appState;
 
     const onDragStart = e => {
         e.dataTransfer.effectAllowed = 'move';
@@ -21,9 +21,9 @@ const Piece = ({
 
         if (turn === piece[0]) {
             const candidateMoves = arbiter.getValidMoves({
-                position: currentPosition[currentPosition.length - 1],
-                prevPosition: currentPosition[currentPosition.length - 2],
-                castleDirection: castleDirection[turn],
+                position: currentGame[currentGame.length - 1].position,
+                prevPosition: currentGame.length > 1 ? currentGame[currentGame.length - 2].position : currentGame[currentGame.length - 1].position,
+                castleDirection: currentGame[currentGame.length - 1].castleDirection[turn],
                 piece,
                 file,
                 rank

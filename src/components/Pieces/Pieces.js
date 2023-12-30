@@ -7,7 +7,7 @@ import { clearCandidates, makeNewMove } from '../../reducer/actions/move';
 import { useAppContext } from '../../contexts/Context';
 import { openPromotion } from '../../reducer/actions/popup';
 import { getCastleDirections } from '../../arbiter/getMoves';
-import { updateCastling, detectStalemate, detectInsufficient, detectCheckmate } from '../../reducer/actions/game';
+import { detectStalemate, detectInsufficient, detectCheckmate } from '../../reducer/actions/game';
 
 const Pieces = () => {
 
@@ -16,7 +16,7 @@ const Pieces = () => {
 
     const { appState, dispatch } = useAppContext();
 
-    const currentPosition = appState.position[appState.position.length - 1];
+    const currentPosition = appState.game[appState.game.length - 1].position;
 
     const calculateCoords = e => {
         const { width, left, top, right, bottom } = ref.current.getBoundingClientRect();
@@ -41,17 +41,6 @@ const Pieces = () => {
         }))
     }
 
-    const updateCastlingState = ({ piece, rank, file }) => {
-        const direction = getCastleDirections({
-            castleDirection: appState.castleDirection,
-            piece, rank, file
-        });
-
-        if (direction) {
-            dispatch(updateCastling(direction));
-        }
-    }
-
     const move = e => {
         const { x, y } = calculateCoords(e);
         const [piece, rank, file] = e.dataTransfer.getData('text').split(',');
@@ -59,16 +48,17 @@ const Pieces = () => {
         if (appState.candidateMoves.find(m => m[0] === x && m[1] === y)) {
 
             const opponent = piece.startsWith('b') ? 'w' : 'b';
-            const castleDirection = appState.castleDirection[`${piece.startsWith('b') ? 'white' : 'black'}`];
+            const castleDirection = appState.game[appState.game.length - 1].castleDirection[`${piece.startsWith('b') ? 'white' : 'black'}`];
 
             if ((piece === 'wp' && x === 7) || (piece === 'bp' && x === 0)) {
                 openPromotionBox({ rank, file, x, y });
                 return;
             }
 
-            if (piece.endsWith('k') || piece.endsWith('r')) {
-                updateCastlingState({ piece, rank, file });
-            }
+            const castle = getCastleDirections({
+                game: appState.game,
+                piece, rank, file
+            });
 
             const newPosition = arbiter.performMove({
                 position: currentPosition,
@@ -80,7 +70,7 @@ const Pieces = () => {
                 piece, rank, file, x, y, position: currentPosition
             });
 
-            dispatch(makeNewMove({ newPosition, newMove }));
+            dispatch(makeNewMove({ newPosition, castle, newMove }));
 
             if (arbiter.insufficientMaterial(newPosition)) {
                 dispatch(detectInsufficient());

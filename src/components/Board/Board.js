@@ -14,7 +14,7 @@ const Board = () => {
     const files = Array(8).fill().map((x, i) => i + 1);
 
     const { appState } = useAppContext()
-    const position = appState.position[appState.position.length - 1];
+    const position = appState.game[appState.game.length - 1].position;
 
     const isChecked = (() => {
         const isInCheck = (arbiter.isPlayerInCheck({

@@ -12,7 +12,7 @@ export const Status = {
 
 export const initGameState = {
     game: [{
-        position: [createPosition()],
+        position: createPosition(),
         castleDirection: {
             w: 'both',
             b: 'both',

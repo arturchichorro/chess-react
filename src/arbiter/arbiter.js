@@ -1,6 +1,6 @@
 import { getRookMoves, getKnightMoves, getBishopMoves, getQueenMoves, getKingMoves, getPawnMoves, getPawnCaptures, getCastlingMoves, getKingPosition, getPieces } from "./getMoves";
 import { movePawn, movePiece } from "./move";
-import { findPieceCoords, areSameColorTiles } from "../helper";
+import { findPieceCoords, areSameColorTiles, isSamePosition } from "../helper";
 
 const arbiter = {
     getRegularMoves: function ({ position, piece, rank, file }) {
@@ -151,6 +151,21 @@ const arbiter = {
         ], []);
 
         return (isInCheck && moves.length === 0);
+    },
+
+    isRepetition: function (game) {
+        let count = 0;
+        const currentGame = game[game.length - 1];
+
+        for (let i = game.length - 1; i >= 0; i -= 2) {
+            if (isSamePosition(currentGame.position, game[i].position, currentGame.castleDirection, game[i].castleDirection)) {
+                count++;
+                if (count === 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

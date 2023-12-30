@@ -16,6 +16,7 @@ const Board = () => {
     const { appState } = useAppContext()
     const position = appState.game[appState.game.length - 1].position;
 
+
     const isChecked = (() => {
         const isInCheck = (arbiter.isPlayerInCheck({
             positionAfterMove: position,

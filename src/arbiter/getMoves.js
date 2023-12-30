@@ -266,7 +266,6 @@ export const getCastleDirections = ({ game, piece, rank, file }) => {
 
     let newCastlePerms = { ...game[game.length - 1].castleDirection };
 
-
     if (piece.endsWith('k') || piece.endsWith('r')) {
         if (piece.endsWith('k')) {
             newCastlePerms[piece[0]] = 'none';

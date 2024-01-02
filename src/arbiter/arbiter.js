@@ -169,6 +169,13 @@ const arbiter = {
             }
         }
         return false;
+    },
+
+    isFifty: function (game) {
+        if (game[game.length - 1].fifty === 100) {
+            return true;
+        }
+        return false;
     }
 
 }

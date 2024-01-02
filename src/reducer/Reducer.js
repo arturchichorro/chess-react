@@ -16,7 +16,8 @@ export const reducer = (state, action) => {
                     position: action.payload.newPosition,
                     castleDirection: {
                         ...action.payload.castle
-                    }
+                    },
+                    fifty: action.payload.fifty
                 }
             ]
 
@@ -82,6 +83,12 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 status: Status.repetition
+            }
+        }
+        case actionTypes.FIFTY: {
+            return {
+                ...state,
+                status: Status.fifty
             }
         }
         case actionTypes.WIN: {

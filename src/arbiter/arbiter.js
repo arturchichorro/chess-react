@@ -1,6 +1,6 @@
 import { getRookMoves, getKnightMoves, getBishopMoves, getQueenMoves, getKingMoves, getPawnMoves, getPawnCaptures, getCastlingMoves, getKingPosition, getPieces } from "./getMoves";
 import { movePawn, movePiece } from "./move";
-import { findPieceCoords, areSameColorTiles, isSamePosition } from "../helper";
+import { findPieceCoords, areSameColorTiles } from "../helper";
 
 const arbiter = {
     getRegularMoves: function ({ position, piece, rank, file }) {
@@ -157,8 +157,11 @@ const arbiter = {
         let count = 0;
         const currentGame = game[game.length - 1];
 
+        if (game.length < 10) {
+            return false;
+        }
         for (let i = game.length - 1; i >= 0; i -= 2) {
-            if (isSamePosition(currentGame.position, game[i].position, currentGame.castleDirection, game[i].castleDirection)) {
+            if (JSON.stringify(currentGame.position) === JSON.stringify(game[i].position) && JSON.stringify(currentGame.castleDirection) === JSON.stringify(game[i].castleDirection)) {
                 count++;
                 if (count === 3) {
                     return true;

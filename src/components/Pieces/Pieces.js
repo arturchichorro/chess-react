@@ -66,6 +66,14 @@ const Pieces = () => {
                 x, y
             });
 
+            const gameAfterMove = [
+                ...appState.game,
+                {
+                    position: newPosition,
+                    castleDirection: castle
+                }
+            ]
+
             const newMove = getNewMoveNotation({
                 piece, rank, file, x, y, position: currentPosition
             });
@@ -78,7 +86,7 @@ const Pieces = () => {
                 dispatch(detectStalemate());
             } else if (arbiter.isCheckmate(newPosition, opponent, castleDirection)) {
                 dispatch(detectCheckmate(piece[0]));
-            } else if (arbiter.isRepetition(appState.game)) {
+            } else if (arbiter.isRepetition(gameAfterMove)) {
                 dispatch(detectRepetition());
             }
         }

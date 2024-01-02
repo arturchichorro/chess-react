@@ -101,7 +101,3 @@ export const getNewMoveNotation = ({ piece, rank, file, x, y, position, promotes
 
     return note;
 }
-
-export const isSamePosition = ({ position1, position2, castleDirection1, castleDirection2 }) => {
-    return JSON.stringify(position1) === JSON.stringify(position2) && JSON.stringify(castleDirection1) === JSON.stringify(castleDirection2);
-}

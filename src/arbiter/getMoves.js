@@ -290,6 +290,24 @@ export const getCastleDirections = ({ game, piece, rank, file }) => {
     return newCastlePerms;
 }
 
+export const getFifty = ({ game, piece, rank, file, x, y }) => {
+    rank = Number(rank);
+    file = Number(file);
+
+    const currentPosition = game[game.length - 1].position;
+    let counter = game[game.length - 1].fifty;
+
+    // Pawn moves resets the counter
+    if (piece.endsWith('p')) {
+        return 0;
+    }
+    // Capturing a piece resets the counter
+    if (currentPosition[x][y] !== "") {
+        return 0;
+    }
+    return counter + 1;
+}
+
 export const getKingPosition = (position, player) => {
     let kingPos;
     position.forEach((rank, x) => {

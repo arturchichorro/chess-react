@@ -33,6 +33,12 @@ export const detectRepetition = () => {
     }
 }
 
+export const detectFifty = () => {
+    return {
+        type: actionTypes.FIFTY,
+    }
+}
+
 export const flip = () => {
     return {
         type: actionTypes.FLIP,

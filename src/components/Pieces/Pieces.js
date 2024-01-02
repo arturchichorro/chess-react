@@ -6,8 +6,8 @@ import { getNewMoveNotation } from '../../helper';
 import { clearCandidates, makeNewMove } from '../../reducer/actions/move';
 import { useAppContext } from '../../contexts/Context';
 import { openPromotion } from '../../reducer/actions/popup';
-import { getCastleDirections } from '../../arbiter/getMoves';
-import { detectStalemate, detectInsufficient, detectCheckmate, detectRepetition } from '../../reducer/actions/game';
+import { getCastleDirections, getFifty } from '../../arbiter/getMoves';
+import { detectStalemate, detectInsufficient, detectCheckmate, detectRepetition, detectFifty } from '../../reducer/actions/game';
 
 const Pieces = () => {
 
@@ -45,6 +45,7 @@ const Pieces = () => {
         const { x, y } = calculateCoords(e);
         const [piece, rank, file] = e.dataTransfer.getData('text').split(',');
 
+        // Checks if we are doing a legal move
         if (appState.candidateMoves.find(m => m[0] === x && m[1] === y)) {
 
             const opponent = piece.startsWith('b') ? 'w' : 'b';
@@ -60,17 +61,25 @@ const Pieces = () => {
                 piece, rank, file
             });
 
+            const updatedFifty = getFifty({
+                game: appState.game,
+                piece, rank, file,
+                x, y
+            })
+
             const newPosition = arbiter.performMove({
                 position: currentPosition,
                 piece, rank, file,
                 x, y
             });
 
+
             const gameAfterMove = [
                 ...appState.game,
                 {
                     position: newPosition,
-                    castleDirection: castle
+                    castleDirection: castle,
+                    fifty: updatedFifty,
                 }
             ]
 
@@ -78,7 +87,7 @@ const Pieces = () => {
                 piece, rank, file, x, y, position: currentPosition
             });
 
-            dispatch(makeNewMove({ newPosition, castle, newMove }));
+            dispatch(makeNewMove({ newPosition, castle, fifty: updatedFifty, newMove }));
 
             if (arbiter.insufficientMaterial(newPosition)) {
                 dispatch(detectInsufficient());
@@ -88,6 +97,8 @@ const Pieces = () => {
                 dispatch(detectCheckmate(piece[0]));
             } else if (arbiter.isRepetition(gameAfterMove)) {
                 dispatch(detectRepetition());
+            } else if (arbiter.isFifty(gameAfterMove)) {
+                dispatch(detectFifty());
             }
         }
         dispatch(clearCandidates());

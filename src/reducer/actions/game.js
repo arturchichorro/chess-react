@@ -27,6 +27,12 @@ export const detectCheckmate = winner => {
     }
 }
 
+export const detectRepetition = () => {
+    return {
+        type: actionTypes.REPETITION,
+    }
+}
+
 export const flip = () => {
     return {
         type: actionTypes.FLIP,

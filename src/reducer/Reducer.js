@@ -78,6 +78,12 @@ export const reducer = (state, action) => {
                 status: Status.insufficient,
             }
         }
+        case actionTypes.REPETITION: {
+            return {
+                ...state,
+                status: Status.repetition
+            }
+        }
         case actionTypes.WIN: {
             return {
                 ...state,

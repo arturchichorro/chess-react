@@ -7,7 +7,7 @@ import { clearCandidates, makeNewMove } from '../../reducer/actions/move';
 import { useAppContext } from '../../contexts/Context';
 import { openPromotion } from '../../reducer/actions/popup';
 import { getCastleDirections } from '../../arbiter/getMoves';
-import { detectStalemate, detectInsufficient, detectCheckmate } from '../../reducer/actions/game';
+import { detectStalemate, detectInsufficient, detectCheckmate, detectRepetition } from '../../reducer/actions/game';
 
 const Pieces = () => {
 
@@ -66,6 +66,14 @@ const Pieces = () => {
                 x, y
             });
 
+            const gameAfterMove = [
+                ...appState.game,
+                {
+                    position: newPosition,
+                    castleDirection: castle
+                }
+            ]
+
             const newMove = getNewMoveNotation({
                 piece, rank, file, x, y, position: currentPosition
             });
@@ -78,6 +86,8 @@ const Pieces = () => {
                 dispatch(detectStalemate());
             } else if (arbiter.isCheckmate(newPosition, opponent, castleDirection)) {
                 dispatch(detectCheckmate(piece[0]));
+            } else if (arbiter.isRepetition(gameAfterMove)) {
+                dispatch(detectRepetition());
             }
         }
         dispatch(clearCandidates());

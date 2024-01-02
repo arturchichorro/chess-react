@@ -151,6 +151,24 @@ const arbiter = {
         ], []);
 
         return (isInCheck && moves.length === 0);
+    },
+
+    isRepetition: function (game) {
+        let count = 0;
+        const currentGame = game[game.length - 1];
+
+        if (game.length < 10) {
+            return false;
+        }
+        for (let i = game.length - 1; i >= 0; i -= 2) {
+            if (JSON.stringify(currentGame.position) === JSON.stringify(game[i].position) && JSON.stringify(currentGame.castleDirection) === JSON.stringify(game[i].castleDirection)) {
+                count++;
+                if (count === 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

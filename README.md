@@ -4,6 +4,8 @@ This project is a chess game built with React and Redux. It offers all the usual
 
 You can try the app here: [Chess in React Demo](https://chess-react-bolota.netlify.app/)
 
+If you want to read more about this project, I wrote a blog post about it [here](https://bolota.eu/posts/2_reactchessv1).
+
 ## Features
 I started this project by following [this YouTube tutorial series](https://www.youtube.com/watch?v=jS9elCC2hPQ&list=PLnWzgq1mKyAsFZoMyZQbB8bNuNufSD0Sz&index=1) (check out the corresponding GitHub repo [here](https://github.com/felerticia/chess)). After completing the tutorial, I added several features to both complete the game with missing rules from the tutorial, and also enhance the overall experience of playing the game:
 

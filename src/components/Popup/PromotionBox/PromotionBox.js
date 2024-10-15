@@ -31,22 +31,24 @@ const PromotionBox = ({ onClosePopup }) => {
 
     const onClick = option => {
         onClosePopup();
-        const newPosition = copyPosition(appState.position[appState.position.length - 1]);
-
+    
+        const currentGameState = appState.game[appState.game.length - 1];
+        const newPosition = copyPosition(currentGameState.position);
+    
         newPosition[promotionSquare.rank][promotionSquare.file] = '';
         newPosition[promotionSquare.x][promotionSquare.y] = color + option;
-
+    
         const newMove = getNewMoveNotation({
             ...promotionSquare,
             piece: color + 'p',
             promotesTo: option,
-            position: appState.position[appState.position.length - 1]
-        })
-
+            position: currentGameState.position // Again, from the current game state
+        });
+    
         dispatch(clearCandidates());
-
+    
         dispatch(makeNewMove({ newPosition, newMove }));
-    }
+    };
 
     return (
         <div className='popup-promotion promotion-choices' style={getPromotionBoxPosition()}>

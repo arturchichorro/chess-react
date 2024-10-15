@@ -1,8 +1,8 @@
-# Chess React App
+# Chess in React
 
-This project is a chess game built with React and Redux. It offers a dynamic gameplay experience and includes several advanced features beyond the basics. The game tracks moves, manages game state, and implements key chess rules.
+This project is a chess game built with React and Redux. It offers all the usual functionality from a chess game: all the rules are implemented, including en passant, bidirectional castling, pawns moving two squares on their first move, checkmantes, stalemates, etc.
 
-You can try the app here: [Chess React App Demo](https://chess-react-bolota.netlify.app/)
+You can try the app here: [Chess in React Demo](https://chess-react-bolota.netlify.app/)
 
 ## Features
 I started this project by following [this YouTube tutorial series](https://www.youtube.com/watch?v=jS9elCC2hPQ&list=PLnWzgq1mKyAsFZoMyZQbB8bNuNufSD0Sz&index=1) (check out the corresponding GitHub repo [here](https://github.com/felerticia/chess)). After completing the tutorial, I added several features to enhance the chess experience:
